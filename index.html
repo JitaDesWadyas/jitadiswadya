@@ -3,158 +3,399 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Jita DiSwadya</title>
+<title>Jita DiSwadya - Il posto perfetto</title>
 <meta name="description" content="Jita DiSwadya - Il posto perfetto - 1">
-<meta name="theme-color" content="#050302">
+<meta name="theme-color" content="#11100e">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --cream:#f5ead7;
-  --muted:rgba(245,234,215,.72);
-  --gold:#d99a42;
-  --gold2:#ffc66d;
-  --line:rgba(255,198,109,.22);
+  --paper:#f1eadc;
+  --paper-soft:rgba(241,234,220,.72);
+  --ink:#15110d;
+  --panel:rgba(18,16,13,.62);
+  --line:rgba(217,154,66,.30);
+  --line-strong:rgba(217,154,66,.56);
+  --warm:#d6af70;
+  --amber:#d99a42;
+  --amber-light:#ffc66d;
+  --warm-soft:rgba(217,154,66,.18);
+  --shadow:rgba(0,0,0,.58);
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{
-  margin:0;width:100%;height:100%;overflow:hidden;background:#000;color:var(--cream);
-  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  width:100%;
+  min-height:100%;
+  margin:0;
+  background:#0d0c0b;
+  color:var(--paper);
+  font-family:"Manrope",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 }
-body{position:relative;isolation:isolate}
+html{overflow-x:hidden}
+body{position:relative;isolation:isolate;overflow-x:hidden}
 .bg-video{
-  position:fixed;inset:0;width:100%;height:100%;object-fit:cover;z-index:-10;
-  filter:brightness(.38) saturate(.86) contrast(1.04);transform:scale(1.03);
+  position:fixed;
+  inset:-2%;
+  z-index:-20;
+  width:104%;
+  height:104%;
+  object-fit:cover;
+  filter:brightness(.58) saturate(.82) contrast(1.04);
+  animation:videoDrift 18s ease-in-out infinite alternate;
 }
-.overlay{
-  position:fixed;inset:0;z-index:-9;
+@keyframes videoDrift{
+  from{transform:scale(1.02) translate3d(-.7%,0,0)}
+  to{transform:scale(1.055) translate3d(.7%,-.8%,0)}
+}
+.grade{
+  position:fixed;
+  inset:0;
+  z-index:-10;
   background:
-    radial-gradient(circle at 50% 10%, rgba(255,198,109,.19), transparent 24%),
-    linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.68)),
-    radial-gradient(circle at center, transparent 0 42%, rgba(0,0,0,.48) 100%);
+    linear-gradient(180deg,rgba(7,7,7,.36) 0%,rgba(11,10,9,.08) 31%,rgba(10,8,6,.56) 100%),
+    linear-gradient(90deg,rgba(0,0,0,.30),transparent 28%,transparent 72%,rgba(0,0,0,.26));
 }
-.overlay:after{
-  content:"";position:absolute;inset:0;opacity:.045;mix-blend-mode:overlay;
+.grain{
+  position:fixed;
+  inset:0;
+  z-index:-9;
+  pointer-events:none;
+  opacity:.12;
+  mix-blend-mode:soft-light;
   background-image:
-    repeating-radial-gradient(circle at 20% 30%, rgba(255,255,255,.9) 0 1px, transparent 1px 3px),
-    repeating-radial-gradient(circle at 70% 60%, rgba(0,0,0,.9) 0 1px, transparent 1px 4px);
+    repeating-linear-gradient(0deg,rgba(255,255,255,.35) 0 1px,transparent 1px 3px),
+    repeating-linear-gradient(90deg,rgba(0,0,0,.32) 0 1px,transparent 1px 4px);
 }
-.light{
-  position:fixed;width:52vmin;height:52vmin;left:50%;top:4%;transform:translateX(-50%);
-  border-radius:999px;z-index:-8;background:radial-gradient(circle,rgba(255,198,109,.20),rgba(255,198,109,.03) 48%,transparent 72%);
-  filter:blur(10px);animation:breathe 8s ease-in-out infinite;
+.page{
+  width:100%;
+  min-height:100dvh;
+  display:grid;
+  grid-template-rows:1fr auto;
+  padding:clamp(18px,4vw,42px) clamp(18px,4vw,42px) calc(clamp(28px,5vw,48px) + env(safe-area-inset-bottom));
 }
-@keyframes breathe{0%,100%{opacity:.55;transform:translateX(-50%) scale(.96)}50%{opacity:1;transform:translateX(-50%) scale(1.04)}}
-.page{width:100%;height:100dvh;display:grid;place-items:center;padding:18px}
-.wrap{width:min(100%,780px);display:grid;justify-items:center;gap:22px;animation:enter .8s ease-out both}
-@keyframes enter{from{opacity:0;transform:translateY(16px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
-.hero{display:grid;justify-items:center;text-align:center;gap:14px}
-.profile{
-  width:clamp(128px,22vh,210px);aspect-ratio:1;border-radius:999px;overflow:hidden;border:1px solid rgba(255,198,109,.32);
-  box-shadow:0 0 0 10px rgba(255,198,109,.025),0 0 75px rgba(217,154,66,.18),0 24px 80px rgba(0,0,0,.46);
-  animation:float 6s ease-in-out infinite;background:#090604;
+.stage{
+  width:min(100%,820px);
+  margin:auto;
+  display:grid;
+  justify-items:center;
+  gap:clamp(16px,2.7vh,24px);
+  text-align:center;
 }
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
-.profile img{width:100%;height:100%;object-fit:cover;display:block;filter:contrast(1.05) saturate(.82) brightness(.88)}
+.artist{
+  display:grid;
+  justify-items:center;
+  gap:10px;
+  animation:rise .7s cubic-bezier(.2,.8,.2,1) both;
+}
+.portrait{
+  width:clamp(82px,12vh,118px);
+  aspect-ratio:1;
+  border-radius:50%;
+  overflow:hidden;
+  border:1px solid rgba(217,154,66,.42);
+  box-shadow:0 14px 45px rgba(0,0,0,.34),0 0 0 7px rgba(217,154,66,.045);
+  background:#17130f;
+}
+.portrait img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  filter:saturate(.82) contrast(1.04) brightness(.92);
+}
 .name{
-  margin:0;font-family:Georgia,"Times New Roman",serif;font-size:clamp(44px,7vh,78px);line-height:.93;
-  font-weight:500;letter-spacing:-.06em;text-shadow:0 0 28px rgba(217,154,66,.12);white-space:nowrap;
+  margin:0;
+  font-family:"Instrument Serif",Georgia,serif;
+  font-size:clamp(38px,6.2vw,76px);
+  font-weight:400;
+  line-height:.9;
+  letter-spacing:0;
+  text-shadow:0 20px 50px rgba(0,0,0,.42);
 }
-.tagline{margin:-4px 0 0;color:var(--muted);font-size:clamp(13px,1.8vh,16px)}
-.songBox{
-  width:min(100%,700px);display:grid;grid-template-columns:145px 1fr;gap:22px;align-items:center;border-radius:30px;
-  border:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.038),rgba(255,255,255,.012)),rgba(8,5,3,.58);
-  backdrop-filter:blur(18px);box-shadow:0 24px 120px rgba(0,0,0,.50),inset 0 1px 0 rgba(255,255,255,.04);
-  padding:20px;overflow:hidden;position:relative;
+.tagline{
+  margin:0;
+  color:var(--paper-soft);
+  font-size:clamp(12px,1.55vw,14px);
+  font-weight:600;
 }
-.songBox:before{
-  content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 0 35%,rgba(255,198,109,.055) 48%,transparent 60%);
-  transform:translateX(-120%);animation:shine 5.6s ease-in-out infinite;
+.release-note{
+  margin:clamp(2px,1vh,8px) 0 -6px;
+  font-family:"Instrument Serif",Georgia,serif;
+  font-size:clamp(20px,3vw,29px);
+  font-style:italic;
+  color:rgba(245,234,215,.88);
+  text-shadow:0 0 28px rgba(217,154,66,.18);
+  animation:rise .72s cubic-bezier(.2,.8,.2,1) .08s both;
 }
-@keyframes shine{0%,60%{transform:translateX(-120%)}82%,100%{transform:translateX(120%)}}
+.song{
+  width:min(100%,620px);
+  display:grid;
+  justify-items:center;
+  gap:clamp(14px,2vh,18px);
+  padding:clamp(14px,2.2vw,18px);
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.018)),var(--panel);
+  box-shadow:0 26px 90px var(--shadow),0 0 0 1px rgba(255,198,109,.035),inset 0 1px 0 rgba(255,255,255,.06);
+  backdrop-filter:blur(16px);
+  position:relative;
+  overflow:hidden;
+  animation:rise .74s cubic-bezier(.2,.8,.2,1) .15s both;
+}
+.song:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border:1px solid rgba(255,198,109,.07);
+  border-radius:inherit;
+  pointer-events:none;
+}
+.song:after{
+  content:"";
+  position:absolute;
+  width:38%;
+  height:150%;
+  top:-25%;
+  left:-45%;
+  background:linear-gradient(100deg,transparent,rgba(255,198,109,.095),transparent);
+  transform:rotate(8deg);
+  animation:glint 7.5s ease-in-out infinite;
+}
+@keyframes glint{
+  0%,58%{left:-45%;opacity:0}
+  68%{opacity:1}
+  86%,100%{left:112%;opacity:0}
+}
 .cover{
-  width:145px;aspect-ratio:1;border-radius:18px;overflow:hidden;border:1px solid rgba(255,198,109,.18);
-  box-shadow:0 20px 60px rgba(0,0,0,.40);animation:coverPulse 5s ease-in-out infinite;position:relative;z-index:1;background:#090604;
+  width:clamp(230px,39vh,360px);
+  aspect-ratio:1;
+  overflow:hidden;
+  border:1px solid rgba(217,154,66,.36);
+  border-radius:13px;
+  box-shadow:0 24px 70px rgba(0,0,0,.48);
+  background:#15120e;
+  position:relative;
+  z-index:1;
 }
-@keyframes coverPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.018)}}
-.cover img{width:100%;height:100%;object-fit:cover;display:block}
-.info{position:relative;z-index:1}
-.kicker{margin:0 0 10px;color:rgba(255,218,158,.82);font-size:10px;font-weight:850;letter-spacing:.23em;text-transform:uppercase}
-.title{margin:0;font-family:Georgia,"Times New Roman",serif;font-size:clamp(36px,5vw,56px);line-height:.95;font-weight:500;letter-spacing:-.055em}
-.buttons{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.cover img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  animation:coverBreath 8s ease-in-out infinite;
+}
+@keyframes coverBreath{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.018)}
+}
+.song-title{
+  position:relative;
+  z-index:1;
+  display:grid;
+  gap:5px;
+}
+.eyebrow{
+  margin:0;
+  color:rgba(255,198,109,.72);
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+.title{
+  margin:0;
+  font-family:"Instrument Serif",Georgia,serif;
+  font-size:clamp(30px,5vw,48px);
+  font-weight:400;
+  line-height:.96;
+  letter-spacing:0;
+}
+.actions{
+  position:relative;
+  z-index:1;
+  width:min(100%,430px);
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+}
 .btn{
-  min-height:44px;padding:0 18px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;
-  color:var(--cream);border:1px solid rgba(255,198,109,.30);background:rgba(255,198,109,.05);
-  font-size:11px;font-weight:850;letter-spacing:.14em;text-transform:uppercase;transition:.18s ease;
+  min-height:48px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:0 18px;
+  border-radius:12px;
+  border:1px solid var(--line-strong);
+  background:linear-gradient(180deg,rgba(245,234,215,.95),rgba(226,216,198,.92));
+  color:var(--ink);
+  text-decoration:none;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  transition:transform .2s ease,border-color .2s ease,background .2s ease,box-shadow .2s ease;
 }
-.btn:hover{transform:translateY(-2px);border-color:rgba(255,198,109,.72);background:rgba(255,198,109,.12)}
-.btn.main{color:#120b04;background:linear-gradient(180deg,#ffc66d,#d99a42);border-color:rgba(255,212,136,.78)}
-.play{width:0;height:0;border-top:6px solid transparent;border-bottom:6px solid transparent;border-left:10px solid currentColor}
-.socials{width:min(100%,700px);display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-.social{
-  min-height:78px;border-radius:22px;border:1px solid rgba(245,234,215,.10);background:rgba(8,5,3,.40);color:rgba(245,234,215,.82);
-  text-decoration:none;display:grid;place-items:center;gap:7px;padding:10px 4px;position:relative;overflow:hidden;transition:.18s ease;
+.btn:hover{
+  transform:translateY(-2px);
+  border-color:rgba(255,198,109,.92);
+  background:linear-gradient(180deg,#fff3d4,#dfc18d);
+  box-shadow:0 14px 34px rgba(0,0,0,.28),0 0 24px rgba(217,154,66,.16);
 }
-.social:before{content:"";position:absolute;inset:0;opacity:0;background:radial-gradient(circle at center,rgba(255,198,109,.12),transparent 62%);transition:.18s ease}
-.social:hover{transform:translateY(-3px);border-color:rgba(255,198,109,.34);color:var(--cream)}
-.social:hover:before{opacity:1}
-.social svg{
-  width:24px;height:24px;stroke:var(--gold2);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;
-  filter:drop-shadow(0 0 10px rgba(255,198,109,.16));position:relative;z-index:1;
+.btn svg{
+  width:17px;
+  height:17px;
+  fill:currentColor;
+  flex:0 0 auto;
 }
-.social strong{position:relative;z-index:1;font-size:10px;font-weight:850;letter-spacing:.16em;text-transform:uppercase}
-@media(max-width:700px){
-  .page{padding:14px}.wrap{gap:16px}.profile{width:112px}.name{font-size:39px}.tagline{font-size:13px}
-  .songBox{width:100%;grid-template-columns:92px 1fr;gap:13px;padding:14px;border-radius:22px}
-  .cover{width:92px;border-radius:15px}.kicker{font-size:9px;letter-spacing:.13em}.title{font-size:29px}
-  .buttons{margin-top:13px;gap:8px}.btn{min-height:38px;padding:0 13px;font-size:9px;letter-spacing:.10em}
-  .social{min-height:64px;border-radius:18px}.social svg{width:21px;height:21px}.social strong{font-size:7.5px;letter-spacing:.045em}
+.footer{
+  width:min(100%,820px);
+  margin:clamp(16px,2.4vh,26px) auto 0;
+  padding-bottom:clamp(8px,1.8vh,18px);
+  display:grid;
+  justify-items:center;
+  gap:11px;
+  animation:fadeIn .75s ease .45s both;
+}
+.footer-socials{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+}
+.icon-link{
+  width:38px;
+  height:38px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(217,154,66,.32);
+  border-radius:10px;
+  background:rgba(15,13,11,.36);
+  color:rgba(245,234,215,.84);
+  text-decoration:none;
+  transition:transform .18s ease,color .18s ease,border-color .18s ease,background .18s ease;
+}
+.icon-link:hover{
+  transform:translateY(-2px);
+  color:var(--amber-light);
+  border-color:rgba(255,198,109,.64);
+  background:rgba(15,13,11,.62);
+}
+.icon-link svg{
+  width:17px;
+  height:17px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.85;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.copyright{
+  margin:0;
+  color:rgba(245,234,215,.55);
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+@keyframes rise{
+  from{opacity:0;transform:translate3d(0,14px,0)}
+  to{opacity:1;transform:translate3d(0,0,0)}
+}
+@keyframes fadeIn{
+  from{opacity:0}
+  to{opacity:1}
+}
+@media(max-width:680px){
+  .page{padding:16px 14px calc(48px + env(safe-area-inset-bottom))}
+  .stage{gap:14px}
+  .portrait{width:78px}
+  .name{font-size:42px}
+  .tagline{font-size:12px}
+  .release-note{font-size:22px;margin-top:0}
+  .song{width:100%;padding:14px;gap:13px;border-radius:20px}
+  .cover{width:min(100%,280px);border-radius:14px}
+  .title{font-size:32px}
+  .actions{width:100%;gap:8px}
+  .btn{min-height:45px;padding:0 12px;font-size:11px;border-radius:13px}
+  .footer{gap:9px;margin-top:18px;padding-bottom:10px}
+  .icon-link{border-radius:11px}
 }
 @media(max-width:370px){
-  .profile{width:98px}.name{font-size:34px}.songBox{grid-template-columns:78px 1fr}.cover{width:78px}.title{font-size:25px}.btn{width:100%}.social{min-height:56px}
+  .page{padding:12px 12px calc(44px + env(safe-area-inset-bottom))}
+  .artist{gap:8px}
+  .portrait{width:68px}
+  .name{font-size:36px}
+  .song{padding:11px}
+  .cover{width:min(100%,238px)}
+  .release-note{font-size:20px}
+  .title{font-size:29px}
+  .btn{font-size:10px;letter-spacing:.06em}
+}
+@media(max-height:740px) and (min-width:681px){
+  .portrait{width:82px}
+  .name{font-size:50px}
+  .cover{width:265px}
+  .song{gap:12px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+    scroll-behavior:auto!important;
+  }
 }
 </style>
 </head>
 <body>
-<video class="bg-video" autoplay muted loop playsinline>
+<video class="bg-video" autoplay muted loop playsinline poster="cover.png">
   <source src="bg-video.mp4" type="video/mp4">
 </video>
-<div class="overlay"></div>
-<div class="light"></div>
+<div class="grade"></div>
+<div class="grain"></div>
 
 <main class="page">
-  <section class="wrap">
-    <header class="hero">
-      <div class="profile"><img src="profile.jpg" alt="Jita DiSwadya"></div>
+  <section class="stage" aria-label="Link ufficiali di Jita DiSwadya">
+    <header class="artist">
+      <div class="portrait"><img src="profile.jpg" alt="Jita DiSwadya"></div>
       <h1 class="name">Jita DiSwadya</h1>
       <p class="tagline">io canto le storie, tu le immagini.</p>
     </header>
 
-    <section class="songBox">
-      <div class="cover"><img src="cover.png" alt="Il posto perfetto - 1"></div>
-      <div class="info">
-        <p class="kicker">Ascolta la mia ultima canzone</p>
+    <p class="release-note">Ascolta la mia ultima canzone</p>
+
+    <section class="song" aria-label="Il posto perfetto - 1">
+      <div class="cover"><img src="cover.png" alt="Cover di Il posto perfetto - 1"></div>
+      <div class="song-title">
+        <p class="eyebrow">Nuova uscita</p>
         <h2 class="title">Il posto perfetto - 1</h2>
-        <div class="buttons">
-          <a class="btn main" href="https://youtube.com/" target="_blank" rel="noopener noreferrer"><span class="play"></span>YouTube</a>
-          <a class="btn" href="https://soundcloud.com/" target="_blank" rel="noopener noreferrer">SoundCloud</a>
-        </div>
+      </div>
+      <div class="actions">
+        <a class="btn" href="https://youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="Ascolta su YouTube">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.6 7.2a3 3 0 0 0-2.1-2.1C17.6 4.6 12 4.6 12 4.6s-5.6 0-7.5.5a3 3 0 0 0-2.1 2.1C2 9.1 2 12 2 12s0 2.9.4 4.8a3 3 0 0 0 2.1 2.1c1.9.5 7.5.5 7.5.5s5.6 0 7.5-.5a3 3 0 0 0 2.1-2.1c.4-1.9.4-4.8.4-4.8s0-2.9-.4-4.8ZM10 15.5v-7l6 3.5-6 3.5Z"/></svg>
+          YouTube
+        </a>
+        <a class="btn" href="https://soundcloud.com/" target="_blank" rel="noopener noreferrer" aria-label="Ascolta su SoundCloud">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.8 10.1a4.6 4.6 0 0 0-1.8.4A6.2 6.2 0 0 0 5.2 12.2 4 4 0 0 0 6 20h12.8a4.95 4.95 0 0 0 0-9.9ZM2 17.8h1.5v-4.2H2v4.2Zm3-6.3h1.5v6.3H5v-6.3Zm3-2.4h1.5v8.7H8V9.1Zm3-1.1h1.5v9.8H11V8Z"/></svg>
+          SoundCloud
+        </a>
       </div>
     </section>
+  </section>
 
-    <nav class="socials">
-      <a class="social" href="https://youtube.com/" target="_blank" rel="noopener noreferrer">
-        <svg viewBox="0 0 24 24"><path d="M3.5 8.8c.2-1.7 1.1-2.7 2.8-2.9 3.8-.4 7.6-.4 11.4 0 1.7.2 2.6 1.2 2.8 2.9.3 2.1.3 4.3 0 6.4-.2 1.7-1.1 2.7-2.8 2.9-3.8.4-7.6.4-11.4 0-1.7-.2-2.6-1.2-2.8-2.9-.3-2.1-.3-4.3 0-6.4Z"/><path d="m10 9 5 3-5 3V9Z" fill="currentColor" stroke="none"/></svg><strong>YouTube</strong>
+  <footer class="footer">
+    <nav class="footer-socials" aria-label="Social">
+      <a class="icon-link" href="https://instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.5"/><path d="M17.5 6.8h.01"/></svg>
       </a>
-      <a class="social" href="https://soundcloud.com/" target="_blank" rel="noopener noreferrer">
-        <svg viewBox="0 0 24 24"><path d="M6 17h11.2a3.3 3.3 0 0 0 .2-6.6 5.2 5.2 0 0 0-10-1.6A4.1 4.1 0 0 0 6 17Z"/><path d="M3.5 14.3v1.9M5.5 12.8v3.4M7.5 11.6v4.6M9.5 9.9v6.3"/></svg><strong>SoundCloud</strong>
-      </a>
-      <a class="social" href="https://instagram.com/" target="_blank" rel="noopener noreferrer">
-        <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.5"/><path d="M17.5 6.8h.01"/></svg><strong>Instagram</strong>
-      </a>
-      <a class="social" href="https://tiktok.com/" target="_blank" rel="noopener noreferrer">
-        <svg viewBox="0 0 24 24"><path d="M14 4v10.2a4.1 4.1 0 1 1-3.4-4"/><path d="M14 4c.7 3 2.5 4.7 5.5 5"/></svg><strong>TikTok</strong>
+      <a class="icon-link" href="https://tiktok.com/" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4v10.2a4.1 4.1 0 1 1-3.4-4"/><path d="M14 4c.7 3 2.5 4.7 5.5 5"/></svg>
       </a>
     </nav>
-  </section>
+    <p class="copyright">Copyright 2026 Jita DiSwadya</p>
+  </footer>
 </main>
 </body>
 </html>
