@@ -42,6 +42,8 @@ jobs:
               raise RuntimeError("Packaging rule not found")
           p.write_text(s)
           PY
+      - name: Restore original Termux launchers
+        run: python3 android/patch-original-launchers.py
       - name: Build debug APK
         working-directory: build-src/TermuxWorkspace
         run: gradle --no-daemon --stacktrace :app:assembleDebug
