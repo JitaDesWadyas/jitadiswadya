@@ -36,8 +36,10 @@ jobs:
           p = Path("build-src/TermuxWorkspace/app/build.gradle.kts")
           s = p.read_text()
           old = '"META-INF/NOTICE.md")'
-          assert old in s, "Packaging rule not found"
-          s = s.replace(old, '"META-INF/NOTICE.md", "META-INF/versions/**")')
+          if old in s:
+              s = s.replace(old, '"META-INF/NOTICE.md", "META-INF/versions/**")')
+          elif '"META-INF/versions/**"' not in s:
+              raise RuntimeError("Packaging rule not found")
           p.write_text(s)
           PY
       - name: Build debug APK
