@@ -29,6 +29,17 @@ jobs:
           "$SDKMANAGER" --install 'platforms;android-35' 'build-tools;35.0.0'
       - name: Extract Termux Workspace source
         run: unzip -q android/TermuxWorkspace-REDMAGIC-sorgenti.zip -d build-src
+      - name: Exclude duplicate multi-release JAR metadata
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path("build-src/TermuxWorkspace/app/build.gradle.kts")
+          s = p.read_text()
+          old = '"META-INF/NOTICE.md")'
+          assert old in s, "Packaging rule not found"
+          s = s.replace(old, '"META-INF/NOTICE.md", "META-INF/versions/**")')
+          p.write_text(s)
+          PY
       - name: Build debug APK
         working-directory: build-src/TermuxWorkspace
         run: gradle --no-daemon --stacktrace :app:assembleDebug
